@@ -1,0 +1,92 @@
+[
+  {
+    "studentId": "sv002",
+    "fullName": "Nguyễn Thị Kim Đoan",
+    "className": "CNTT - K18",
+    "room": "P101",
+    "status": "NGHI NGỜ",
+    "percentage": 68.49,
+    "recognitionTime": "07:00:01",
+    "recognizedPerson": "Nguyễn Thị Kim Đoan"
+  },
+  {
+    "studentId": "sv002",
+    "fullName": "Nguyễn Thị Kim Đoan",
+    "className": "CNTT - K18",
+    "room": "P102",
+    "status": "HỢP LỆ",
+    "percentage": 76.21,
+    "recognitionTime": "07:03:11",
+    "recognizedPerson": "Nguyễn Thị Kim Đoan"
+  },
+  {
+    "studentId": "sv002",
+    "fullName": "Nguyễn Thị Kim Đoan",
+    "className": "14DHTH",
+    "room": "P101",
+    "status": "HỢP LỆ",
+    "percentage": 77.83,
+    "recognitionTime": "07:07:03",
+    "recognizedPerson": "Nguyễn Thị Kim Đoan"
+  },
+  {
+    "studentId": "sv001",
+    "fullName": "Huỳnh Lâm Gia Linh",
+    "className": "14DHTH",
+    "room": "P101",
+    "status": "KHÔNG KHỚP",
+    "percentage": 0.86,
+    "recognitionTime": "07:09:58",
+    "recognizedPerson": "Huỳnh Lâm Gia Linh"
+  },
+  {
+    "studentId": "sv002",
+    "fullName": "Nguyễn Thị Kim Đoan",
+    "className": "14DHTH",
+    "room": "P101",
+    "status": "NGHI NGỜ",
+    "percentage": 74.4,
+    "recognitionTime": "07:15:52",
+    "recognizedPerson": "Nguyễn Thị Kim Đoan"
+  },
+  {
+    "studentId": "sv002",
+    "fullName": "Nguyễn Thị Kim Đoan",
+    "className": "14DHTH",
+    "room": "P101",
+    "status": "NGHI NGỜ",
+    "percentage": 74.12,
+    "recognitionTime": "07:24:18",
+    "recognizedPerson": "Nguyễn Thị Kim Đoan"
+  },
+  {
+    "studentId": "sv001",
+    "fullName": "Huỳnh Lâm Gia Linh",
+    "className": "14DHTH",
+    "room": "P101",
+    "status": "NGHI NGỜ",
+    "percentage": 73.14,
+    "recognitionTime": "11:08:35",
+    "recognizedPerson": "Huỳnh Lâm Gia Linh"
+  },
+  {
+    "studentId": "sv001",
+    "fullName": "Huỳnh Lâm Gia Linh",
+    "className": "14DHTH",
+    "room": "P101",
+    "status": "HỢP LỆ",
+    "percentage": 76.88,
+    "recognitionTime": "11:09:47",
+    "recognizedPerson": "Huỳnh Lâm Gia Linh"
+  },
+  {
+    "studentId": "sv004",
+    "fullName": "Ngô Thị Thanh Huyền",
+    "className": "14DHTH",
+    "room": "P101",
+    "status": "NGHI NGỜ",
+    "percentage": 71.98,
+    "recognitionTime": "11:11:31",
+    "recognizedPerson": "Ngô Thị Thanh Huyền"
+  }
+]
