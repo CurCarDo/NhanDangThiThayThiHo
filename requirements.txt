@@ -1,12 +1,4 @@
-Flask
-Flask-SQLAlchemy
-Flask-Bcrypt
-Flask-SocketIO
-PyJWT
-insightface
-onnxruntime
-numpy
-scikit-learn
-Pillow
+flask
 opencv-python
-eventlet
+numpy
+face-recognition

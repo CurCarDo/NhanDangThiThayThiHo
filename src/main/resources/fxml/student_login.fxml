@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="800" prefWidth="1200" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faceproctoring.controller.StudentLoginController">
+
+    <!-- Background -->
+    <ImageView fitHeight="800" fitWidth="1200" opacity="1.0" preserveRatio="false">
+        <image>
+            <Image url="@/images/maxresdefault.jpg" />
+        </image>
+    </ImageView>
+
+    <!-- Overlay -->
+    <Rectangle arcHeight="24" arcWidth="24" fill="#FFFFFFAA" height="819.0" width="1200.0" />
+
+    <!-- Main Card -->
+    <StackPane maxHeight="560" maxWidth="920" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 20, 0, 0, 8);">
+        <children>
+            <HBox prefHeight="520" prefWidth="900" spacing="0">
+
+                <!-- LEFT SECTION -->
+                <VBox alignment="CENTER" prefHeight="520" prefWidth="520" spacing="20">
+                    <padding><Insets bottom="32" left="32" right="24" top="32" /></padding>
+
+                    <Label style="-fx-text-fill: #0d47a1; -fx-font-weight: bold;" text="CHÀO MỪNG BẠN ĐẾN HỆ THỐNG">
+                        <font><Font name="Arial Bold" size="22" /></font>
+                    </Label>
+
+                    <Label style="-fx-text-fill: #1976d2; -fx-font-weight: bold;" text="NHẬN DIỆN THI THAY THI HỘ">
+                        <font><Font name="Arial Bold" size="18" /></font>
+                    </Label>
+
+                    <ImageView fitHeight="381.0" fitWidth="546.0" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/hinhanh.png" />
+                        </image>
+                    </ImageView>
+                </VBox>
+
+                <!-- RIGHT SECTION -->
+                <VBox alignment="TOP_CENTER" prefHeight="520" prefWidth="380" spacing="18">
+                    <padding><Insets bottom="32" left="24" right="32" top="32" /></padding>
+
+                    <!-- Logo phía trên -->
+                    <ImageView fitHeight="96" fitWidth="96" preserveRatio="true" smooth="true">
+                        <image>
+                            <Image url="@/images/huit-logo.png" />
+                        </image>
+                    </ImageView>
+
+                    <Label style="-fx-text-fill: #1976d2; -fx-font-weight: bold;" text="ĐĂNG NHẬP">
+                        <font><Font name="Arial Bold" size="20" /></font>
+                    </Label>
+
+                    <!-- Form login -->
+                    <VBox alignment="CENTER" spacing="12">
+
+                        <Label fx:id="lblError" textFill="#d32f2f" />
+                        <TextField fx:id="txtStudentId" prefWidth="280" promptText="Nhập mã sinh viên" style="-fx-background-radius: 8; -fx-padding: 10;" />
+
+                        <PasswordField fx:id="txtPassword" prefWidth="280" promptText="Nhập mật khẩu" style="-fx-background-radius: 8; -fx-padding: 10;" />
+
+                        <Button onAction="#onLoginClicked" prefHeight="37.0" prefWidth="327.0" style="-fx-background-color: linear-gradient(#1976d2, #0d47a1);                                        -fx-text-fill: white;                                        -fx-background-radius: 8;                                        -fx-font-weight: bold;                                        -fx-padding: 10;" text="ĐĂNG NHẬP" />
+                    </VBox>
+
+                     <Button onAction="#onBack" style="-fx-background-color: transparent;                                        -fx-text-fill: #1976d2;                                        -fx-underline: true;" text="Quay lại" />
+                </VBox>
+            </HBox>
+        </children>
+    </StackPane>
+</StackPane>
