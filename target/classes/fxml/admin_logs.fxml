@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="800" prefWidth="1400" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faceproctoring.controller.AdminLogsController">
+    <!-- Sidebar -->
+    <VBox prefWidth="200" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
+        <padding><Insets bottom="20" left="0" right="0" top="20" /></padding>
+        <!-- Logo and Title -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding><Insets left="20" right="20" /></padding>
+            <ImageView fitHeight="32" fitWidth="32" preserveRatio="true">
+                <image><Image url="@/images/huit-logo.png" /></image>
+            </ImageView>
+            <VBox spacing="0">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="HUIT Admin" />
+                <Label style="-fx-font-size: 10; -fx-text-fill: #666;" text="Quản trị viên" />
+            </VBox>
+        </HBox>
+        
+        <VBox spacing="5" VBox.vgrow="ALWAYS">
+            <padding><Insets top="30" /></padding>
+            <!-- Menu Items -->
+            <Button alignment="CENTER_LEFT" onAction="#onDashboard" prefWidth="200" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="📊 Dashboard">
+                <font><Font size="13" /></font>
+            </Button>
+            <Button alignment="CENTER_LEFT" onAction="#onStudents" prefWidth="200" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="👤 Sinh viên">
+                <font><Font size="13" /></font>
+            </Button>
+            <Button alignment="CENTER_LEFT" onAction="#onFaceDatabase" prefWidth="200" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="📋 CSDL khuôn mặt">
+                <font><Font size="13" /></font>
+            </Button>
+            <Button alignment="CENTER_LEFT" prefWidth="200" style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="📝 Nhật ký">
+                <font><Font size="13" /></font>
+            </Button>
+                <!-- Settings button removed -->
+        </VBox>
+        
+        <!-- Logout Button -->
+        <HBox alignment="CENTER" prefWidth="200">
+            <Button onAction="#onLogout" style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-background-radius: 6; -fx-padding: 8 16; -fx-cursor: hand;" text="⎋ Đăng xuất">
+                <font><Font size="13" /></font>
+            </Button>
+        </HBox>
+    </VBox>
+    
+    <!-- Main Content -->
+    <VBox style="-fx-background-color: #f5f5f5;" HBox.hgrow="ALWAYS">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 1 0;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Nhật Ký Xác Thực" />
+                <Label style="-fx-font-size: 13; -fx-text-fill: #666;" text="Theo dõi tất cả các lần xác thực khuôn mặt" />
+            </VBox>
+            <Button onAction="#onExportExcel" style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-background-radius: 6; -fx-padding: 10 20; -fx-cursor: hand;" text="⬇ Xuất Excel">
+                <font><Font size="12" /></font>
+            </Button>
+        </HBox>
+        
+        <!-- Scrollable Content -->
+        <ScrollPane fitToWidth="true" style="-fx-background: #f5f5f5; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+            <VBox spacing="20">
+                <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+                
+                <!-- Statistics Cards -->
+                <HBox spacing="15">
+                    <!-- Card 1 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-text-fill: #666; -fx-font-size: 13;" text="Tổng số" HBox.hgrow="ALWAYS" />
+                            <StackPane style="-fx-background-color: #e3f2fd; -fx-background-radius: 20; -fx-pref-width: 36; -fx-pref-height: 36;">
+                                <Label style="-fx-text-fill: #1976d2; -fx-font-size: 18;" text="📊" />
+                            </StackPane>
+                        </HBox>
+                        <Label fx:id="lblTotalCount" style="-fx-font-size: 32; -fx-font-weight: bold;" text="0" />
+                    </VBox>
+                    
+                    <!-- Card 2 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-text-fill: #666; -fx-font-size: 13;" text="Hợp lệ" HBox.hgrow="ALWAYS" />
+                            <StackPane style="-fx-background-color: #e8f5e9; -fx-background-radius: 20; -fx-pref-width: 36; -fx-pref-height: 36;">
+                                <Label style="-fx-text-fill: #43a047; -fx-font-size: 18;" text="✓" />
+                            </StackPane>
+                        </HBox>
+                        <Label fx:id="lblValidCount" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #43a047;" text="0" />
+                    </VBox>
+                    
+                    <!-- Card 3 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-text-fill: #666; -fx-font-size: 13;" text="Nghi ngờ" HBox.hgrow="ALWAYS" />
+                            <StackPane style="-fx-background-color: #fff8e1; -fx-background-radius: 20; -fx-pref-width: 36; -fx-pref-height: 36;">
+                                <Label style="-fx-text-fill: #f9a825; -fx-font-size: 18;" text="⚠" />
+                            </StackPane>
+                        </HBox>
+                        <Label fx:id="lblSuspiciousCount" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #f9a825;" text="0" />
+                    </VBox>
+                    
+                    <!-- Card 4 -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-text-fill: #666; -fx-font-size: 13;" text="Không hợp lệ" HBox.hgrow="ALWAYS" />
+                            <StackPane style="-fx-background-color: #ffebee; -fx-background-radius: 20; -fx-pref-width: 36; -fx-pref-height: 36;">
+                                <Label style="-fx-text-fill: #e53935; -fx-font-size: 18;" text="✗" />
+                            </StackPane>
+                        </HBox>
+                        <Label fx:id="lblInvalidCount" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #e53935;" text="0" />
+                    </VBox>
+                </HBox>
+                
+                <!-- Search + Filter Row -->
+                <HBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);">
+                    <TextField fx:id="txtSearch" promptText="🔍 Tìm kiếm theo tên, MSSV..." style="-fx-background-radius: 8; -fx-padding: 10;" HBox.hgrow="ALWAYS" />
+                    <Button onAction="#onSearch" style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 8 16; -fx-cursor: hand;" text="Tìm kiếm">
+                        <font><Font size="12" /></font>
+                    </Button>
+                    <Button onAction="#onRefresh" style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 8 16; -fx-cursor: hand;" text="🔄 Làm mới">
+                        <font><Font size="12" /></font>
+                    </Button>
+                    <Button onAction="#onClearAll" style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 8 16; -fx-cursor: hand;" text="🗑️ Xóa tất cả">
+                        <font><Font size="12" /></font>
+                    </Button>
+                </HBox>
+
+                <!-- Table -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);">
+                    <TableView fx:id="tableRecognitionLogs" prefHeight="480" style="-fx-background-radius: 12; -fx-padding: 8;">
+                        <columns>
+                            <TableColumn fx:id="colStudentId" prefWidth="120" text="MSSV" />
+                            <TableColumn fx:id="colFullName" prefWidth="180" text="Họ tên" />
+                            <TableColumn fx:id="colClassName" prefWidth="120" text="Lớp" />
+                            <TableColumn fx:id="colRoom" prefWidth="100" text="Phòng thi" />
+                            <TableColumn fx:id="colStatus" prefWidth="150" text="Trạng thái" />
+                            <TableColumn fx:id="colPercentage" prefWidth="100" text="Độ khớp" />
+                            <TableColumn fx:id="colRecognizedPerson" prefWidth="180" text="Nhận diện" />
+                            <TableColumn fx:id="colTime" prefWidth="120" text="Giờ xác thực" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+</HBox>

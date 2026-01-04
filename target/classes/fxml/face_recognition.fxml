@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<StackPane prefHeight="800" prefWidth="1200" style="-fx-background-color: #f3f8fe;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faceproctoring.controller.FaceRecognitionController">
+	<!-- Background -->
+	<children>
+		<VBox alignment="TOP_CENTER" spacing="20">
+			<padding><Insets bottom="24" left="24" right="24" top="24" /></padding>
+			<!-- Header -->
+			<HBox alignment="CENTER_LEFT" spacing="12">
+				<ImageView fitHeight="48" fitWidth="48" preserveRatio="true">
+					<image><Image url="@/images/huit-logo.png" /></image>
+				</ImageView>
+				<VBox alignment="TOP_LEFT" spacing="2">
+					<Label style="-fx-text-fill: #1976d2; -fx-font-size: 32; -fx-font-weight: bold;" text="Hệ Thống Nhận Diện Khuôn Mặt" />
+					<Label style="-fx-text-fill: #222; -fx-font-size: 16; -fx-font-weight: normal;" text="Trường ĐH Công Thương TP.HCM">
+						<font><Font name="Arial" size="16" /></font>
+					</Label>
+				</VBox>
+			</HBox>
+			<!-- Main Content -->
+			<HBox alignment="TOP_CENTER" spacing="32">
+				<!-- Camera Card -->
+				<VBox prefHeight="520" prefWidth="520" spacing="16" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);">
+					<padding><Insets bottom="24" left="24" right="24" top="24" /></padding>
+					<HBox alignment="CENTER_LEFT" spacing="8">
+						<Label style="-fx-text-fill: #222; -fx-font-size: 20; -fx-font-weight: bold;" text="📷 Camera Trực Tiếp" />
+						<HBox HBox.hgrow="ALWAYS" />
+						<Label fx:id="lblResult" alignment="CENTER_RIGHT" style="-fx-text-fill: #43a047; -fx-font-weight: bold;" text="Sẵn sàng">
+									<font>
+										<Font size="16.0" />
+									</font></Label>
+					</HBox>
+					<StackPane alignment="CENTER" prefHeight="385.0" prefWidth="469.0" style="-fx-background-color: #1976d2; -fx-background-radius: 16;">
+						<Rectangle arcHeight="16" arcWidth="16" fill="#ffffff22" height="256.0" stroke="#ffffff" strokeWidth="2" width="350.0" />
+						<ImageView fx:id="imgCamera" fitHeight="256.0" fitWidth="350.0" preserveRatio="true" />
+						<!-- spinner shown while camera is initializing -->
+						<ProgressIndicator fx:id="spinner" visible="false" prefWidth="72" prefHeight="72" />
+					</StackPane>
+						  <Button fx:id="btnStart" onAction="#onStartRecognition" prefHeight="52.0" prefWidth="482.0" style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="Bắt đầu nhận diện" visible="false">
+                  <font>
+                     <Font size="18.0" />
+                  </font></Button>
+						  <Button fx:id="btnCapture" onAction="#onCapturePhoto" visible="true" prefHeight="52.0" prefWidth="482.0" style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="📸 Chụp ảnh">
+                  <font>
+                     <Font size="18.0" />
+                  </font></Button>
+						  <Button fx:id="btnRetry" onAction="#onRetry" visible="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="Thử lại" />
+				</VBox>
+				<!-- Right Column -->
+				<VBox alignment="TOP_CENTER" prefWidth="520" spacing="16">
+					<!-- Student Info Card -->
+					<VBox prefHeight="212.0" prefWidth="520.0" spacing="8" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);">
+						<padding><Insets bottom="24" left="24" right="24" top="24" /></padding>
+											<Label style="-fx-text-fill: #222; -fx-font-size: 20; -fx-font-weight: bold;" text="👤 Thông Tin Sinh Viên">
+												<font><Font name="System Bold" size="16.0" /></font>
+											</Label>
+						<HBox alignment="CENTER_LEFT" spacing="8" />
+						<GridPane alignment="TOP_LEFT" hgap="12" vgap="8">
+							<Label text="Mã số sinh viên:">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+							<Label fx:id="lblStudentId" GridPane.columnIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #1976d2; -fx-font-size: 14;" text="..." GridPane.halignment="RIGHT" />
+							<Label text="Họ và tên:" GridPane.rowIndex="1">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+							<Label fx:id="lblStudentName" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #1976d2; -fx-font-size: 14;" text="..." GridPane.halignment="RIGHT" />
+							<Label text="Lớp:" GridPane.rowIndex="2">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+							<Label fx:id="lblClass" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #1976d2; -fx-font-size: 14;" text="..." GridPane.halignment="RIGHT" />
+							<Label text="Phòng thi:" GridPane.rowIndex="3">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+							<Label fx:id="lblRoom" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #1976d2; -fx-font-size: 14;" text="..." GridPane.halignment="RIGHT" />
+                     <columnConstraints>
+                        <ColumnConstraints minWidth="150" prefWidth="150" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+						</GridPane>
+					</VBox>
+					<!-- Sample Image Card -->
+					<VBox prefWidth="520" spacing="8" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);">
+						<padding><Insets bottom="24" left="24" right="24" top="24" /></padding>
+										<Label style="-fx-text-fill: #222; -fx-font-size: 20; -fx-font-weight: bold;" text="Ảnh mẫu">
+											<font><Font name="System Bold" size="16.0" /></font>
+										</Label>
+						<StackPane alignment="CENTER" prefHeight="240.0" prefWidth="463.0" style="-fx-background-color: #e3f2fd; -fx-background-radius: 16;">
+							<ImageView fx:id="imgSample" fitHeight="200.0" fitWidth="200.0" preserveRatio="true" />
+						</StackPane>
+					</VBox>
+					<!-- Notes Card -->
+					<VBox prefWidth="520" spacing="8" style="-fx-background-color: #e3f2fd; -fx-background-radius: 12;">
+						<padding><Insets bottom="12" left="24" right="24" top="12" /></padding>
+						<Label style="-fx-text-fill: #1976d2; -fx-font-weight: bold;" text="Lưu ý:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Label>
+						<VBox spacing="4">
+							<Label style="-fx-text-fill: #1976d2;" text="• Đảm bảo khuôn mặt ở giữa khung hình">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+							<Label style="-fx-text-fill: #1976d2;" text="• Ánh sáng đủ sáng và rõ ràng">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+							<Label style="-fx-text-fill: #1976d2;" text="• Không đeo khẩu trang hoặc kính đen">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+						</VBox>
+					</VBox>
+				</VBox>
+			</HBox>
+		</VBox>
+	</children>
+</StackPane>

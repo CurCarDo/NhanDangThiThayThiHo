@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="800" prefWidth="1400" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faceproctoring.controller.AdminStudentsController">
+    <!-- Sidebar -->
+    <VBox prefWidth="200" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 0 0;">
+        <padding><Insets top="20" right="0" bottom="20" left="0" /></padding>
+        <!-- Logo and Title -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding><Insets left="20" right="20" /></padding>
+            <ImageView fitHeight="32" fitWidth="32" preserveRatio="true">
+                <image><Image url="@/images/huit-logo.png" /></image>
+            </ImageView>
+            <VBox spacing="0">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="HUIT Admin" />
+                <Label style="-fx-font-size: 10; -fx-text-fill: #666;" text="Quản trị viên" />
+            </VBox>
+        </HBox>
+        
+        <VBox spacing="5" VBox.vgrow="ALWAYS">
+            <padding><Insets top="30" /></padding>
+            <!-- Menu Items -->
+            <Button onAction="#onDashboard" alignment="CENTER_LEFT" prefWidth="200" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="📊 Dashboard">
+                <font><Font size="13" /></font>
+            </Button>
+            <Button alignment="CENTER_LEFT" prefWidth="200" style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="👤 Sinh viên">
+                <font><Font size="13" /></font>
+            </Button>
+            <Button onAction="#onFaceDatabase" alignment="CENTER_LEFT" prefWidth="200" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="📋 CSDL khuôn mặt">
+                <font><Font size="13" /></font>
+            </Button>
+            <Button onAction="#onLogs" alignment="CENTER_LEFT" prefWidth="200" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-padding: 12 20; -fx-background-radius: 0; -fx-cursor: hand;" text="📝 Nhật ký">
+                <font><Font size="13" /></font>
+            </Button>
+                <!-- Settings button removed -->
+        </VBox>
+        
+        <!-- Logout Button -->
+        <HBox alignment="CENTER" prefWidth="200">
+            <Button onAction="#onLogout" style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-background-radius: 6; -fx-padding: 8 16; -fx-cursor: hand;" text="⎋ Đăng xuất">
+                <font><Font size="13" /></font>
+            </Button>
+        </HBox>
+    </VBox>
+    
+    <!-- Main Content -->
+    <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: #f5f5f5;">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 1 0;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Danh Sách Sinh Viên" />
+                <Label style="-fx-font-size: 13; -fx-text-fill: #666;" text="Quản lý và theo dõi trạng thái xác thực" />
+            </VBox>
+            
+        </HBox>
+        
+        <!-- Scrollable Content -->
+        <ScrollPane fitToWidth="true" style="-fx-background: #f5f5f5; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+            <VBox spacing="16">
+                <padding><Insets top="20" right="20" bottom="20" left="20" /></padding>
+                
+                <!-- Search + Filter Row -->
+                <HBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);">
+                    <TextField fx:id="txtSearch" promptText="Tìm kiếm theo tên, MSSV..." HBox.hgrow="ALWAYS" style="-fx-background-radius: 8; -fx-padding: 10;" />
+                    <Button text="Lọc" style="-fx-background-color: transparent; -fx-border-color: #ccc; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 8 12;" />
+                </HBox>
+
+                <!-- Table -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 6, 0, 0, 2);">
+                    <TableView fx:id="table" prefHeight="560" style="-fx-background-radius: 12; -fx-padding: 8;">
+                        <columns>
+                            <TableColumn fx:id="colId" text="MSSV" prefWidth="140" />
+                            <TableColumn fx:id="colName" text="Họ tên" prefWidth="220" />
+                            <TableColumn fx:id="colClass" text="Lớp" prefWidth="140" />
+                            <TableColumn fx:id="colRoom" text="Phòng thi" prefWidth="120" />
+                            <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="150" />
+                            <TableColumn fx:id="colMatch" text="Độ khớp" prefWidth="120" />
+                            <TableColumn fx:id="colTime" text="Giờ xác thực" prefWidth="140" />
+                            <TableColumn fx:id="colAction" text="Hành động" prefWidth="100" />
+                        </columns>
+                    </TableView>
+                    
+                    <!-- Pagination Bar -->
+                    <HBox alignment="CENTER_RIGHT" spacing="8" style="-fx-padding: 8 16 12 16;">
+                        <Label text="Hiển thị 1-8 trong tổng số 156 sinh viên" HBox.hgrow="ALWAYS" />
+                        <Button text="Trước" style="-fx-background-color: transparent; -fx-border-color: #ddd; -fx-background-radius: 6; -fx-border-radius: 6;" />
+                        <Button text="1" style="-fx-background-color: transparent; -fx-border-color: #ddd; -fx-background-radius: 6; -fx-border-radius: 6;" />
+                        <Button text="2" style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-background-radius: 6;" />
+                        <Button text="3" style="-fx-background-color: transparent; -fx-border-color: #ddd; -fx-background-radius: 6; -fx-border-radius: 6;" />
+                        <Button text="Sau" style="-fx-background-color: transparent; -fx-border-color: #ddd; -fx-background-radius: 6; -fx-border-radius: 6;" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+</HBox>
